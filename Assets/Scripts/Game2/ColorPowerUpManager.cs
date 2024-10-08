@@ -64,7 +64,7 @@ public class ColorPowerUpManager : MonoBehaviour
 
     private void ValidateCollision(ColorData enemyColor, int damage)
     {
-        if (enemyColor.color != currentColor.color)
+        if (enemyColor.color == currentColor.color)
         {
             GameManager.Instance.ModifyLife(-damage);
             _canChange = false;  
