@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterController2D : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    Rigidbody2D _compRigidbody2D;
+    [SerializeField] float speed;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        _compRigidbody2D = GetComponent<Rigidbody2D>();
+    }
+    public void OnMovement(InputAction.CallbackContext contex)
+    {
+        Vector2 movementPlayer = contex.ReadValue<Vector2>();
+        _compRigidbody2D.velocity = movementPlayer * speed;
     }
 }

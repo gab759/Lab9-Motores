@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ShapePanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Image shapeImage;
+
+    private void OnEnable()
     {
-        
+        ShapeObject.OnChangeShape += UpdateShape;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        ShapeObject.OnChangeShape -= UpdateShape;
+    }
+
+    public void UpdateShape(Sprite newSprite)
+    {
+        shapeImage.sprite = newSprite;
     }
 }
